@@ -10,11 +10,30 @@ const verifyHeroe = (req, res, next) => {
     res.status(404).json(`Super héros non répertorié`)
   } else {
     req.heroe = heroe
-    req.userIndex = heroIndex
+    req.userIndex = heroeIndex
     next()
   }
 }
 
+const verifyAvailability = (req, res, next) => {
+  const { slug } = req.params
+  const heroe = heroes.find(heroe => heroe.slug === slug)
+  const heroeIndex = heroes.findIndex(heroe => heroe.slug === slug)
+
+  if (heroe) {
+    res.status(403).json(`Super héros déjà répertorié!`)
+  } else {
+    req.heroe = heroe
+    req.userIndex = heroeIndex
+    next()
+  }
+}
+
+
 module.exports = {
   verifyHeroe: verifyHeroe
+}
+
+module.exports = {
+  verifyAvailability: verifyAvailability
 }
