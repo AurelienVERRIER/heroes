@@ -14,4 +14,20 @@ app.get('/:slug', verifyHeroe, (req, res, next) => {
   next()
 })
 
+app.get('/:slug/powers', verifyHeroe, (req, res, next) => {
+  res.json(req.hero).power
+  res.send('ajouté!')
+  next()
+})
+
+app.post('/:slug/powers', verifyHeroe, (req, res, next) => {
+  res.json(req.hero)
+  next()
+})
+
+app.put('/:slug/powers', verifyHeroe, (req, res, next) => {
+  
+  next()
+})
+
 module.exports = app

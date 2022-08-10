@@ -1,5 +1,6 @@
 const heroes = require('../users')
 
+
 const verifyHeroe = (req, res, next) => {
   const { slug } = req.params
   const heroe = heroes.find(heroe => heroe.slug === slug)
